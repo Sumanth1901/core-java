@@ -1,5 +1,7 @@
-package com.xworkz.hasa.constant;
+package com.xworkz.hospitalapp.patient;
 
 public enum Gender {
-male,female,others;
+	
+	male,female,others;
+
 }
