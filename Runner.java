@@ -5,68 +5,63 @@ import java.util.Arrays;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.xworkz.beans.Actor;
-import com.xworkz.beans.Rocket;
-import com.xworkz.beans.Season;
-import com.xworkz.confii.ConfigClass;
+import com.xworkz.configuration.AutowiredConfiguration;
+import com.xworkz.configuration.beans.Bullet;
+import com.xworkz.configuration.beans.HardwareShop;
+import com.xworkz.configuration.beans.Pencil;
+import com.xworkz.configuration.beans.Rubber;
+import com.xworkz.configuration.beans.Software;
+import com.xworkz.configuration.beans.SoftwareEngineer;
 
 public class Runner {
 
 	public static void main(String[] args) {
-
-		ApplicationContext application=new AnnotationConfigApplicationContext(ConfigClass.class);
-
-		System.out.println(Arrays.toString(application.getBeanDefinitionNames()));
 		
-		System.out.println("==============with class Rocket literals====");
-		Rocket refOfRocket=application.getBean("rocket",Rocket.class);
-		System.out.println(refOfRocket.getCountry());
-		System.out.println(refOfRocket.getCountry());
-		System.out.println(refOfRocket.getName());
-		System.out.println(refOfRocket.getBudget());
+		int count=0;
+		
+		ApplicationContext container=new AnnotationConfigApplicationContext(AutowiredConfiguration.class);
+		
+		System.out.println(Arrays.toString(container.getBeanDefinitionNames()));
+		
+		HardwareShop ref=container.getBean(HardwareShop.class);
+		
+		System.out.println(ref);
+		
+		System.out.println("=================");
+		
+		Software ref1=container.getBean(Software.class);
+		System.out.println(ref1);
+		
+		System.out.println("==============");
+		
+		SoftwareEngineer ref2=container.getBean(SoftwareEngineer.class);
+		System.out.println(ref2);
+		
+		System.out.println("======================");
+		
+		Pencil ref3=container.getBean(Pencil.class);
+		System.out.println(ref3);
+		
+		System.out.println("====================");
+		
+		Rubber ref4=container.getBean(Rubber.class);
+		System.out.println(ref4);
+		
+		System.out.println("======================");
+		
+		Bullet ref5=container.getBean(Bullet.class);
+		System.out.println(ref5);
 
-		System.out.println("+============Rocket with methode object with literals===============+");
-
-		Rocket refOfRocket1=application.getBean("rocky",Rocket.class);
-		System.out.println(refOfRocket1);
-
-		System.out.println(refOfRocket1.getCountry());
-		System.out.println(refOfRocket1.getName());
-		System.out.println(refOfRocket1.getBudget());
-
-
-
-		System.out.println("=======Actor class with constructor===========");
-
-		Actor act=application.getBean("actor",Actor.class);
-		System.out.println(act);
-		System.out.println(act.getLang());
-		System.out.println(act.getName());
-		System.out.println(act.getAge());
-
-		System.out.println("=========Actor constructor with methode object============");
-		Actor act1=application.getBean("act",Actor.class);
-		System.out.println(act1);
-		System.out.println(act1.getLang());
-		System.out.println(act1.getName());
-		System.out.println(act1.getAge());
-
-		System.out.println("=========Season setter with class file============");
-
-		Season sea=application.getBean("season",Season.class);
-		System.out.println(sea);
-		System.out.println(sea.getName());
-		System.out.println(sea.getStartingMon());
-		System.out.println(sea.getDuration());
-
-		System.out.println("=========Season setter with methode object============");
-
-		Season sea1=application.getBean("sea",Season.class);
-		System.out.println(sea1);
-		System.out.println(sea1.getName());
-		System.out.println(sea1.getStartingMon());
-		System.out.println(sea1.getDuration());
-
+		
+		System.out.println("============================");
+		String arr[]=container.getBeanDefinitionNames();
+		System.out.println(container.getBeanDefinitionCount());
+		
+		for (int i = 0; i < arr.length; i++) {
+			count++;
+			
+		}
+		System.out.println(count +" bjects with spring");
 	}
 
 }
