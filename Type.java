@@ -1,7 +1,7 @@
-package com.xworkz.configuration.beans;
+package com.xworkz.beans;
 
 public enum Type {
 	
-	graphite,wood,penpencil;
+	big,small,medium;
 
 }
